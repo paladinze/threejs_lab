@@ -24,6 +24,7 @@ const directionalLight = new THREE.DirectionalLight(0xfdfcf0, 1);
 directionalLight.position.set(10, 10, 10);
 scene.add(directionalLight);
 
+// create sphere mesh
 const geometry = new THREE.SphereGeometry(5, 50, 50);
 const material = new THREE.MeshPhongMaterial({
   map: new THREE.ImageUtils.loadTexture("images/mars2.jpg"),
@@ -31,13 +32,13 @@ const material = new THREE.MeshPhongMaterial({
   specular: 0x333333,
   shininess: 10
 });
-const mars = new THREE.Mesh(geometry, material);
-scene.add(mars);
+const sphere = new THREE.Mesh(geometry, material);
+scene.add(sphere);
 
 // render loop
-const render = function(actions) {
+const render = function() {
   renderer.render(scene, camera);
-  mars.rotation.y += 0.01;
+  sphere.rotation.y += 0.01;
   requestAnimationFrame(render);
 };
 render();
